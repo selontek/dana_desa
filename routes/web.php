@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DanaDesaController;
+use App\Http\Controllers\BelanjaController;
 
 
 /*
@@ -17,19 +18,41 @@ use App\Http\Controllers\DanaDesaController;
 */
 
 Route::get('/', function () {
-    return view('admin.index');
+    return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('admin.index');
+
+// ROUTE USER
+Route::middleware(['auth','level:user'])->group(function(){
+    Route::get('/user', function () {
+        return view('dashboard');
+    })->middleware('auth');
 });
 
-Route::middleware('auth')->group(function () {
+// ROUTE ADMIN
+Route::middleware(['auth', 'level:Administrator'])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin.index');
+    });
+
     Route::get('/admin/dana', [DanaDesaController::class, 'index']);
     Route::get('/admin/tambah', [DanaDesaController::class, 'create']);
     Route::post('/admin/store', [DanaDesaController::class, 'store']);
     Route::patch('/profile', [DanaDesaController::class, 'update']);
     Route::delete('/profile', [DanaDesaController::class, 'destroy']);
+
+
+    Route::get('/belanja', [BelanjaController::class, 'index']);
+    Route::get('/admin/tambah', [DanaDesaController::class, 'create']);
+    Route::post('/admin/store', [DanaDesaController::class, 'store']);
+    Route::patch('/profile', [DanaDesaController::class, 'update']);
+    Route::delete('/profile', [DanaDesaController::class, 'destroy']);
+});
+
+
+
+Route::middleware('auth')->group(function () {
+    
 });
 
 
