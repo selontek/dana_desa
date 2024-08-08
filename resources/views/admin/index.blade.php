@@ -35,18 +35,18 @@
   </div>
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-dark" style="background-color: #009dff; opacity: 90%;">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/index" class="nav-link">Home</a>
+        <a href="/index" class="nav-link" style="color: white; text-decoration: none;">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+        {{-- <a href="#" class="nav-link" style="color: whit; text-decoration: none;">Contact</a>
+      </li> --}}
     </ul>
 
     <!-- Right navbar links -->
@@ -173,7 +173,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #009dff;" >
     <!-- Brand Logo -->
 
     <!-- Sidebar -->
@@ -184,56 +184,65 @@
           <img src="dist/img/naganraya.jpeg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">RANTAU SELAMAT</a>
+          <a href="#" class="d-block" style="color: white; text-decoration: none;">RANTAU SELAMAT</a>
         </div>
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+
+          <x-dropdown-link :href="route('logout')"
+                  onclick="event.preventDefault();
+                              this.closest('form').submit();">
+              {{ __('Log Out') }}
+          </x-dropdown-link>
+      </form>
       </div>
 
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
+      {{-- <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" >
           <div class="input-group-append">
             <button class="btn btn-sidebar">
               <i class="fas fa-search fa-fw"></i>
             </button>
           </div>
         </div>
-      </div>
+      </div> --}}
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="/admin/dana" class="nav-link">
+            <a href="/admin/dana" class="nav-link" style="color: white; text-decoration: none;">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dana Desa
               </p>
             </a>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+          <li class="nav-item">
+            <a href="#" class="nav-link" style="color: white; text-decoration: none;">
+              <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Dashboard
+                Belanja
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="/admin/pembangunan" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+                  <p>Pembangunan Desa</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="/admin/olahraga" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
+                  <p>Kepemudaan & Olahraga</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="/admin/bencana" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
+                  <p>Penanggulan Bencana</p>
                 </a>
               </li>
             </ul>

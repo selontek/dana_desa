@@ -39,7 +39,7 @@
   </div>
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-dark" style="background-color: #009dff; opacity: 90%;">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -177,7 +177,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #009dff;">
     <!-- Brand Logo -->
 
     <!-- Sidebar -->
@@ -188,12 +188,12 @@
           <img src="../dist/img/naganraya.jpeg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">RANTAU SELAMAT</a>
+          <a href="#" class="d-block" style="color: white; text-decoration: none;">RANTAU SELAMAT</a>
         </div>
       </div>
 
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
+      {{-- <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
@@ -202,16 +202,45 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> --}}
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="/admin/dana" class="nav-link">
+            <a href="/admin/dana" class="nav-link" style="color: white; text-decoration: none;">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dana Desa
               </p>
             </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" style="color: white; text-decoration: none;">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Belanja
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/pembangunan" class="nav-link" style="color: white; text-decoration: none;">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pembangunan Desa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/olahraga" class="nav-link" style="color: white; text-decoration: none;">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kepemudaan & Olahraga</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/bencana" class="nav-link" style="color: white; text-decoration: none;">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Penanggulan Bencana</p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
@@ -246,7 +275,7 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputjumlah">Jumlah Anggaran</label>
-                    <input type="number" name="jumlah" class="form-control" id="exampleInputPassword1" placeholder="JUmlah Anggaran">
+                    <input type="number" name="jumlah" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Anggaran">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputtanggal">Jumlah Anggaran</label>

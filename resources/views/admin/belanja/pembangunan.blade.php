@@ -261,8 +261,8 @@
     <!-- /.card -->
     <div class="card">
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h3 class="card-title">DANA DESA</h3>
-            <button type="button" style="width: 180px; margin-left: 900px;" class="btn btn-sm btn-block bg-gradient-primary ms-auto"><a href="/admin/tambah" style="color: inherit; text-decoration: none;">Tambah</a></button>
+            <h3 class="card-title">Pembangunan Desa</h3>
+            <button type="button" style="width: 180px; margin-left: 900px;" class="btn btn-sm btn-block bg-gradient-primary ms-auto"><a href="/admin/tambahp" style="color: inherit; text-decoration: none;">Tambah</a></button>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -270,22 +270,31 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Sumber Dana</th>
-                        <th>Jumlah Anggaran</th>
-                        <th>Tanggal</th>
+                        <th>Rancangan</th>
+                        <th>Jasa</th>
+                        <th>Penanggung Jawab</th>
+                        <th>Tanggal Pembuatan</th>
+                        <th>Etimasi</th>
+                        <th>Anggaran</th>
+                        <th>Realisasi</th>
+                        <th>Lebih/Kurang</th>
+                        <th>Bukti</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($dana as $item)
+                  {{-- @foreach ($dana as $item) --}}
                     <tr>
-                        <td>{{$nomor++}}</td>
+                      <td>
+
+                      </td>
+                        {{-- <td>{{$nomor++}}</td>
                         <td>{{$item->sumberdana}}</td>
                         <td>{{$item->jumlah}}</td>
                         <td>{{$item->tanggal}}</td>
-                        <td>action</td>
+                        <td>action</td> --}}
                     </tr>
-                    @endforeach
+                    {{-- @endforeach --}}
                 </tbody>
             </table>
         </div>
