@@ -3,7 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DanaDesaController;
-use App\Http\Controllers\BelanjaController;
+use App\Http\Controllers\PembangunanController;
+use App\Http\Controllers\OlahragaController;
+use App\Http\Controllers\BencanaController;
+
 
 
 /*
@@ -42,11 +45,25 @@ Route::middleware(['auth', 'level:Administrator'])->group(function () {
     Route::delete('/profile', [DanaDesaController::class, 'destroy']);
 
 
-    Route::get('/belanja', [BelanjaController::class, 'index']);
-    Route::get('/admin/tambah', [DanaDesaController::class, 'create']);
-    Route::post('/admin/store', [DanaDesaController::class, 'store']);
-    Route::patch('/profile', [DanaDesaController::class, 'update']);
-    Route::delete('/profile', [DanaDesaController::class, 'destroy']);
+    Route::get('/admin/pembangunan', [PembangunanController::class, 'index']);
+    Route::get('/admin/tambahp', [PembangunanController::class, 'create']);
+    Route::post('/admin/store', [PembangunanController::class, 'store']);
+    Route::patch('/profile', [PembangunanController::class, 'update']);
+    Route::delete('/profile', [PembangunanController::class, 'destroy']);
+
+
+    Route::get('/admin/olahraga', [OlahragaController::class, 'index']);
+    Route::get('/admin/tambah', [OlahragaController::class, 'create']);
+    Route::post('/admin/store', [OlahragaController::class, 'store']);
+    Route::patch('/profile', [OlahragaController::class, 'update']);
+    Route::delete('/profile', [OlahragaController::class, 'destroy']);
+
+
+    Route::get('/admin/bencana', [BencanaController::class, 'index']);
+    Route::get('/admin/tambah', [OlahragaController::class, 'create']);
+    Route::post('/admin/store', [OlahragaController::class, 'store']);
+    Route::patch('/profile', [OlahragaController::class, 'update']);
+    Route::delete('/profile', [OlahragaController::class, 'destroy']);
 });
 
 
