@@ -228,19 +228,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/pembangunan" class="nav-link" style="color: white; text-decoration: none;">
+                <a href="/pembangunan" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pembangunan Desa</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/olahraga" class="nav-link" style="color: white; text-decoration: none;">
+                <a href="/olahraga" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kepemudaan & Olahraga</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/bencana" class="nav-link" style="color: white; text-decoration: none;">
+                <a href="/bencana" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Penanggulan Bencana</p>
                 </a>
@@ -266,28 +266,23 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Title</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-        </div>
-        <div class="card-body">
-          Start creating your amazing application!
+      <div class="card" style="width: 100%; height: 100vh;">
+        <div class="card-body" style="background-image: url('{{ asset('dist/img/desa.jpg') }}'); background-size: cover; background-position: center; color: white; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; padding: 20px;">
+            <div style="margin-top: 10%; text-align: center;">
+                <h1 style="font-weight: bold; font-size: 5rem; margin: 0; padding-bottom: 10px; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);">Selamat datang di</h1>
+                <h3 style="font-weight: bold; font-size: 3.5rem; margin: 0; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);">Gampong Rantau Selamat</h3>
+                <h4 style="font-weight: bold; font-size: 2.5rem; margin: 0;"> <a href="/admin/dana" class="card-link">Update data</a></h4>
+            </div>
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-          Footer
-        </div>
         <!-- /.card-footer-->
-      </div>
+    </div>
+    
+    
+    
+    
+    
+    
       <!-- /.card -->
 
     </section>

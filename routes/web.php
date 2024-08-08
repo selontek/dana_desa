@@ -45,16 +45,16 @@ Route::middleware(['auth', 'level:Administrator'])->group(function () {
     Route::delete('/profile', [DanaDesaController::class, 'destroy']);
 
 
-    Route::get('/admin/pembangunan', [PembangunanController::class, 'index']);
-    Route::get('/admin/tambahp', [PembangunanController::class, 'create']);
-    Route::post('/admin/store', [PembangunanController::class, 'store']);
+    Route::get('/pembangunan', [PembangunanController::class, 'index']);
+    Route::get('/pembangunan/tambah', [PembangunanController::class, 'create']);
+    Route::post('/pembangunan/store', [PembangunanController::class, 'store']);
     Route::patch('/profile', [PembangunanController::class, 'update']);
     Route::delete('/profile', [PembangunanController::class, 'destroy']);
 
 
-    Route::get('/admin/olahraga', [OlahragaController::class, 'index']);
-    Route::get('/admin/tambah', [OlahragaController::class, 'create']);
-    Route::post('/admin/store', [OlahragaController::class, 'store']);
+    Route::get('/olahraga', [OlahragaController::class, 'index']);
+    Route::get('/olahraga/tambah', [OlahragaController::class, 'create']);
+    Route::post('/olahraga/store', [OlahragaController::class, 'store']);
     Route::patch('/profile', [OlahragaController::class, 'update']);
     Route::delete('/profile', [OlahragaController::class, 'destroy']);
 

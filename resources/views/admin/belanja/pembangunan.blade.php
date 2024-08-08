@@ -223,19 +223,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/pembangunan" class="nav-link" style="color: white; text-decoration: none;">
+                <a href="/pembangunan" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pembangunan Desa</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/olahraga" class="nav-link" style="color: white; text-decoration: none;">
+                <a href="/olahraga" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kepemudaan & Olahraga</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/bencana" class="nav-link" style="color: white; text-decoration: none;">
+                <a href="/bencana" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Penanggulan Bencana</p>
                 </a>
@@ -262,7 +262,7 @@
     <div class="card">
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h3 class="card-title">Pembangunan Desa</h3>
-            <button type="button" style="width: 180px; margin-left: 900px;" class="btn btn-sm btn-block bg-gradient-primary ms-auto"><a href="/admin/tambahp" style="color: inherit; text-decoration: none;">Tambah</a></button>
+            <button type="button" style="width: 180px; margin-left: 900px;" class="btn btn-sm btn-block bg-gradient-primary ms-auto"><a href="/pembangunan/tambah" style="color: inherit; text-decoration: none;">Tambah</a></button>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
