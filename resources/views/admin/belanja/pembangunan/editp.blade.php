@@ -185,7 +185,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../dist/img/naganraya.jpeg" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/naganraya.jpeg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block" style="color: white; text-decoration: none;">RANTAU SELAMAT</a>
@@ -266,40 +266,41 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="post" action="/pembangunan/{{$pem->id}}">
+              <form method="post" action="/pembangunan/{{$pem->id}}"  enctype="multipart/form-data">
+                @method('PUT')
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputtext">Nama Rancangan</label>
-                    <input type="text" name="rancangan" class="form-control" value="{{$jur->jurusan}}" id="exampleInputtext" placeholder="Rancangan">
+                    <input type="text" name="rancangan" class="form-control" value="{{$pem->rancangan}}" id="exampleInputtext" placeholder="Rancangan">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputtext">Jasa</label>
-                    <input type="text" name="jasa" class="form-control" value="{{$jur->jurusan}}" id="exampleInputtext" placeholder="Jasa">
+                    <input type="text" name="jasa" class="form-control" value="{{$pem->jasa}}" id="exampleInputtext" placeholder="Jasa">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputtext">Penanggung Jawab</label>
-                    <input type="text" name="penanggungjawab" class="form-control" value="{{$jur->jurusan}}" id="exampleInputtext" placeholder="Penanggung Jawab">
+                    <input type="text" name="penanggungjawab" class="form-control" value="{{$pem->penanggungjawab}}" id="exampleInputtext" placeholder="Penanggung Jawab">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputtanggal">Tanggal Pembuatan</label>
-                    <input type="date" name="tanggal" class="form-control" value="{{$jur->jurusan}}" id="exampleInputdate">
+                    <input type="date" name="tanggal" class="form-control" value="{{$pem->tanggal}}" id="exampleInputdate">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputtext">Estimasi</label>
-                    <input type="text" name="estimasi" class="form-control" value="{{$jur->jurusan}}" id="exampleInputtext" placeholder="Estimasi">
+                    <input type="text" name="estimasi" class="form-control" value="{{$pem->estimasi}}" id="exampleInputtext" placeholder="Estimasi">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputjumlah">Jumlah Anggaran</label>
-                    <input type="number" name="jumlah" class="form-control" value="{{$jur->jurusan}}" id="exampleInputPassword1" placeholder="Jumlah Anggaran">
+                    <input type="number" name="jumlah" class="form-control" value="{{$pem->jumlah}}" id="exampleInputPassword1" placeholder="Jumlah Anggaran">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputjumlah">Realisasi</label>
-                    <input type="number" name="realisasi" class="form-control" value="{{$jur->jurusan}}" id="exampleInputPassword1" placeholder="Realisasi">
+                    <input type="number" name="realisasi" class="form-control" value="{{$pem->realisasi}}" id="exampleInputPassword1" placeholder="Realisasi">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputtext">Lebih/kurang</label>
-                    <input type="number" name="lebihkurang" class="form-control" value="{{$jur->jurusan}}" id="exampleInputPassword1" placeholder="Lebih Kurang">
+                    <input type="number" name="lebihkurang" class="form-control" value="{{$pem->lebihkurang}}" id="exampleInputPassword1" placeholder="Lebih Kurang">
                   </div>
                 <!-- /.card-body -->
                 <div class="card-footer--">

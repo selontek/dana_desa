@@ -266,7 +266,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="post" action="/admin/store">
+              <form method="post" action="/olahraga/store">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">

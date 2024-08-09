@@ -294,10 +294,38 @@
                         <td>{{$item->jumlah}}</td>
                         <td>{{$item->realisasi}}</td>
                         <td>{{$item->lebihkurang}}</td>
-                        <td><img src="{{ asset('/foto/'.$item->foto) }}" width="100" alt=""></td>
+                        <td><img src="{{ asset('/foto/'.$item->foto) }}" width="100px" alt=""></td>
                         {{-- <td><img src="{{ asset('storage/fotos/' . $pembangunan->foto) }}" alt="Foto Pembangunan"> --}}
                         </td>
-                        <td><a href="/admin/edit/{{$item->id}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i>Edit</a></td>
+                        <td><a href="/pembangunan/editp/{{$item->id}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i></a>
+                        
+                          <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#hapus{{$item->id}}">
+                            <i class="fa fa-trash"></i>
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="hapus{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Peringatan</h1>
+                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                Yakin ingin menghapus data rancangan <b>{{$item->pembangunan}}</b>?
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                <form action="/pembangunan/{{$item->id}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-primary">Hapus</button>
+                                </form>
+
+                                </div>
+                            </div>
+                            </div>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

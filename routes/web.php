@@ -49,8 +49,9 @@ Route::middleware(['auth', 'level:Administrator'])->group(function () {
     Route::get('/pembangunan', [PembangunanController::class, 'index']);
     Route::get('/pembangunan/tambah', [PembangunanController::class, 'create']);
     Route::post('/pembangunan/store', [PembangunanController::class, 'store']);
-    Route::patch('/profile', [PembangunanController::class, 'update']);
-    Route::delete('/profile', [PembangunanController::class, 'destroy']);
+    Route::get('/pembangunan/editp/{id}', [PembangunanController::class, 'edit']);
+    Route::put('/pembangunan/{id}', [PembangunanController::class, 'update']);
+    Route::delete('/pembangunan/{id}', [PembangunanController::class, 'destroy']);
 
 
     Route::get('/olahraga', [OlahragaController::class, 'index']);
