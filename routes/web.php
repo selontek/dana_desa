@@ -65,8 +65,9 @@ Route::middleware(['auth', 'level:Administrator'])->group(function () {
     Route::get('/bencana', [BencanaController::class, 'index']);
     Route::get('/bencana/tambah', [BencanaController::class, 'create']);
     Route::post('/bencana/store', [BencanaController::class, 'store']);
-    Route::patch('/profile', [BencanaController::class, 'update']);
-    Route::delete('/profile', [BencanaController::class, 'destroy']);
+    Route::get('/bencana/editb/{id}', [BencanaController::class, 'edit']);
+    Route::patch('/bencana/{id}', [BencanaController::class, 'update']);
+    Route::delete('/bencana/{id}', [BencanaController::class, 'destroy']);
 });
 
 

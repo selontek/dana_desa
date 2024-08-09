@@ -81,6 +81,9 @@ class OlahragaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ola = Olahraga::find($id);
+        $ola->delete();
+
+        return redirect('/olahraga');
     }
 }

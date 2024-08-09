@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bencana;
 
 class BencanaController extends Controller
 {
@@ -11,7 +12,9 @@ class BencanaController extends Controller
      */
     public function index()
     {
-        return view('admin.belanja.bencana.bencana');
+        $nomor = 1;
+        $bencana = Bencana::all();
+        return view('admin.belanja.bencana.bencana',compact('nomor','bencana'));
     }
 
     /**
@@ -27,7 +30,14 @@ class BencanaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $bencana = new Bencana;
+        $bencana->kondisi = $request-> kondisi; 
+        $bencana->jumlah = $request-> jumlah;
+        $bencana->realisasi = $request-> realisasi;
+        $bencana->lebihkurang = $request-> lebihkurang;
+        $bencana->save();
+
+        return redirect('bencana');
     }
 
     /**
@@ -43,7 +53,8 @@ class BencanaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ben = Bencana::find($id);
+        return view('admin.belanja.bencana.editb',compact('ben'));
     }
 
     /**
@@ -51,7 +62,14 @@ class BencanaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $ben = Bencana::find($id);
+        $ben->kondisi = $request->kondisi;
+        $ben->jumlah = $request->jumlah;
+        $ben->realisasi = $request-> realisasi;
+        $ben->lebihkurang = $request-> lebihkurang;
+        $ben->save();
+
+        return redirect('/bencana');
     }
 
     /**
@@ -59,6 +77,9 @@ class BencanaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ben = Bencana::find($id);
+        $ben->delete();
+
+        return redirect('/bencana');
     }
 }
