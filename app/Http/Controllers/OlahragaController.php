@@ -11,7 +11,7 @@ class OlahragaController extends Controller
      */
     public function index()
     {
-        return view('admin.belanja.olahraga');
+        return view('admin.belanja.olahraga.olahraga');
     }
 
     /**
@@ -19,7 +19,7 @@ class OlahragaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.belanja.olahraga.tambaho');
     }
 
     /**

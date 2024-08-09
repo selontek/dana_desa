@@ -46,10 +46,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/admin" class="nav-link" style="color: white; text-decoration: none;">Home</a>
+        <a href="/admin" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link" style="color: white; text-decoration: none;">Contact</a>
+        <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
 
@@ -259,45 +259,38 @@
     <!-- Main content -->
     <section class="content">
     <!-- /.card -->
-    <div class="card">
-    <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h3 class="card-title">Pembangunan Desa</h3>
-            <button type="button" style="width: 180px; margin-left: 900px;" class="btn btn-sm btn-block bg-gradient-primary ms-auto"><a href="/pembangunan/tambah" style="color: inherit; text-decoration: none;">Tambah</a></button>
-        </div>
         <!-- /.card-header -->
-        <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Rancangan</th>
-                        <th>Jasa</th>
-                        <th>Penanggung Jawab</th>
-                        <th>Tanggal Pembuatan</th>
-                        <th>Etimasi</th>
-                        <th>Anggaran</th>
-                        <th>Realisasi</th>
-                        <th>Lebih/Kurang</th>
-                        <th>Bukti</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  {{-- @foreach ($dana as $item) --}}
-                    <tr>
-                      <td>
-
-                      </td>
-                        {{-- <td>{{$nomor++}}</td>
-                        <td>{{$item->sumberdana}}</td>
-                        <td>{{$item->jumlah}}</td>
-                        <td>{{$item->tanggal}}</td>
-                        <td>action</td> --}}
-                    </tr>
-                    {{-- @endforeach --}}
-                </tbody>
-            </table>
-        </div>
+        <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Tambah data bencana</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post" action="/admin/store">
+                @csrf
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputtext">Kondisi</label>
+                    <input type="text" name="sumberdana" class="form-control" id="exampleInputtext" placeholder="Sumber Dana">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputjumlah">Anggaran</label>
+                    <input type="number" name="jumlah" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Anggaran">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputjumlah">Realisasi</label>
+                    <input type="number" name="realisasi" class="form-control" id="exampleInputPassword1" placeholder="Realisasi">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputtext">Lebih/kurang</label>
+                    <input type="number" name="lebihkurang" class="form-control" id="exampleInputPassword1" placeholder="Lebih Kurang">
+                  </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
         <!-- /.card-body -->
     </div>
     <!-- /.card -->

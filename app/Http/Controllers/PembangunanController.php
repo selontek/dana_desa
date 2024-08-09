@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pembangunan;
 
 class PembangunanController extends Controller
 {
@@ -11,7 +12,9 @@ class PembangunanController extends Controller
      */
     public function index()
     {
-        return view('admin.belanja.pembangunan');
+        $nomor = 1;
+        $pembangunan = Pembangunan::all();       
+        return view('admin.belanja.pembangunan.pembangunan',compact('nomor','pembangunan'));
     }
 
     /**
@@ -19,7 +22,7 @@ class PembangunanController extends Controller
      */
     public function create()
     {
-        return view('admin.belanja.tambahp');
+        return view('admin.belanja.pembangunan.tambahp');
     }
 
     /**
@@ -27,7 +30,25 @@ class PembangunanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'foto' => 'required|max:2048|image',
+        ]);
+
+        $pembangunan = new Pembangunan;
+        $pembangunan->rancangan = $request-> rancangan;
+        $pembangunan->jasa = $request-> jasa;
+        $pembangunan->penanggungjawab = $request-> penanggungjawab;
+        $pembangunan->tanggal = $request-> tanggal;
+        $pembangunan->estimasi = $request-> estimasi;
+        $pembangunan->jumlah = $request-> jumlah;
+        $pembangunan->realisasi = $request-> realisasi;
+        $pembangunan->lebihkurang = $request-> lebihkurang;
+        $pembangunan->foto = $request->foto->getClientOriginalName();
+        $pembangunan->save();
+
+        $request->foto->move('foto',$request->foto->getClientOriginalName());
+
+        return redirect('/pembangunan');
     }
 
     /**
@@ -43,7 +64,8 @@ class PembangunanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pem = Jurusan::find($id);
+        return view('pembangunan.edit',compact('pem'));
     }
 
     /**
@@ -51,7 +73,19 @@ class PembangunanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pem = Pembangunan::find($id);
+        $pembangunan->rancangan = $request-> rancangan;
+        $pembangunan->jasa = $request-> jasa;
+        $pembangunan->penanggungjawab = $request-> penanggungjawab;
+        $pembangunan->tanggal = $request-> tanggal;
+        $pembangunan->estimasi = $request-> estimasi;
+        $pembangunan->jumlah = $request-> jumlah;
+        $pembangunan->realisasi = $request-> realisasi;
+        $pembangunan->lebihkurang = $request-> lebihkurang;
+        $pembangunan->foto = $request->foto->getClientOriginalName();
+        $pem->save();
+
+        return redirect('/pembangunan');
     }
 
     /**

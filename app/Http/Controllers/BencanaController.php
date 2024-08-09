@@ -11,7 +11,7 @@ class BencanaController extends Controller
      */
     public function index()
     {
-        return view('admin.belanja.bencana');
+        return view('admin.belanja.bencana.bencana');
     }
 
     /**
@@ -19,7 +19,7 @@ class BencanaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.belanja.bencana.tambahb');
     }
 
     /**

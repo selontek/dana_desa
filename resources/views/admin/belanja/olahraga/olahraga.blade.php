@@ -261,8 +261,8 @@
     <!-- /.card -->
     <div class="card">
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h3 class="card-title">Penanggulan Bencana</h3>
-            <button type="button" style="width: 180px; margin-left: 900px;" class="btn btn-sm btn-block bg-gradient-primary ms-auto"><a href="/admin/tambah" style="color: inherit; text-decoration: none;">Tambah</a></button>
+            <h3 class="card-title">Kepemudaan dan Olahraga</h3>
+            <button type="button" style="width: 180px; margin-left: 900px;" class="btn btn-sm btn-block bg-gradient-primary ms-auto"><a href="/olahraga/tambah" style="color: inherit; text-decoration: none;">Tambah</a></button>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -270,7 +270,9 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Kondisi</th>
+                        <th>keperluan</th>
+                        <th>Penanggung Jawab</th>
+                        <th>Tanggal Serah</th>
                         <th>Anggaran</th>
                         <th>Realisasi</th>
                         <th>Lebih/Kurang</th>

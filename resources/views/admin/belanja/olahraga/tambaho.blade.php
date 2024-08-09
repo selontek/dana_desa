@@ -25,6 +25,10 @@
   <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -42,10 +46,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/admin" class="nav-link" style="color: white; text-decoration: none;">Home</a>
+        <a href="/admin" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        {{-- <a href="#" class="nav-link" style="color: whit; text-decoration: none;">Contact</a>
+      {{-- <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
       </li> --}}
     </ul>
 
@@ -173,7 +177,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #009dff;" >
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #009dff;">
     <!-- Brand Logo -->
 
     <!-- Sidebar -->
@@ -181,26 +185,17 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/naganraya.jpeg" class="img-circle elevation-2" alt="User Image">
+          <img src="../dist/img/naganraya.jpeg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block" style="color: white; text-decoration: none;">RANTAU SELAMAT</a>
         </div>
-        <form method="POST" action="{{ route('logout') }}">
-          @csrf
-
-          <x-dropdown-link :href="route('logout')"
-                  onclick="event.preventDefault();
-                              this.closest('form').submit();">
-              {{ __('Log Out') }}
-          </x-dropdown-link>
-      </form>
       </div>
 
       <!-- SidebarSearch Form -->
       {{-- <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" >
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
             <button class="btn btn-sidebar">
               <i class="fas fa-search fa-fw"></i>
@@ -249,7 +244,6 @@
           </li>
         </ul>
       </nav>
-      
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -264,26 +258,53 @@
 
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
-      <div class="card" style="width: 100%; height: 100vh;">
-        <div class="card-body" style="background-image: url('{{ asset('dist/img/desa.jpg') }}'); background-size: cover; background-position: center; color: white; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; padding: 20px;">
-            <div style="margin-top: 10%; text-align: center;">
-                <h1 style="font-weight: bold; font-size: 6rem; margin: 0; padding-bottom: 1px; text-shadow: 3px 3px 6px rgba(0, 121, 113, 0.5); ">Selamat datang di</h1>
-                <h3 style="font-weight: bold; font-size: 3.5rem; margin: 0; text-shadow: 3px 3px 10px rgba(0, 121, 113, 0.5);">Gampong Rantau Selamat</h3>
-                <h4 style="font-weight: bold; font-size: 2rem; margin: 0;"> <a href="/admin/dana" class="card-link" style="color: rgb(255, 255, 255); text-shadow: 0 0  25px white; margin-top: 15px; display: block;">>>> Update data <<<</a></h4>
+    <!-- /.card -->
+        <!-- /.card-header -->
+        <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Tambah data Kepemudaan</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post" action="/admin/store">
+                @csrf
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputtext">Kebutuhan</label>
+                    <input type="text" name="kebutuhan" class="form-control" id="exampleInputtext" placeholder="Kebutuhan">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputtext">penanggung Jawab</label>
+                    <input type="text" name="penanggungjawab" class="form-control" id="exampleInputtext" placeholder="Penanggung Jawab">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputtanggal">Tanggal Serah</label>
+                    <input type="date" name="tanggal" class="form-control" id="exampleInputdate">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputjumlah">Jumlah Anggaran</label>
+                    <input type="number" name="jumlah" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Anggaran">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputjumlah">Realisasi</label>
+                    <input type="number" name="realisasi" class="form-control" id="exampleInputPassword1" placeholder="Realisasi">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputtext">Lebih/kurang</label>
+                    <input type="number" name="lebihkurang" class="form-control" id="exampleInputPassword1" placeholder="Lebih Kurang">
+                  </div>
+                <!-- /.card-body -->
+                <div class="card-footer--">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
             </div>
-        </div>
         <!-- /.card-body -->
-        <!-- /.card-footer-->
     </div>
-    
-    
-    
-    
-    
-    
-      <!-- /.card -->
+    <!-- /.card -->
+</section>
+<!-- /.content -->
+
 
     </section>
     <!-- /.content -->
@@ -333,5 +354,35 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>

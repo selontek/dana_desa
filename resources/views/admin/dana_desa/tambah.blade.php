@@ -223,19 +223,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/pembangunan" class="nav-link" style="color: white; text-decoration: none;">
+                <a href="/pembangunan" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pembangunan Desa</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/olahraga" class="nav-link" style="color: white; text-decoration: none;">
+                <a href="/olahraga" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kepemudaan & Olahraga</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/bencana" class="nav-link" style="color: white; text-decoration: none;">
+                <a href="/bencana" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Penanggulan Bencana</p>
                 </a>
@@ -278,7 +278,7 @@
                     <input type="number" name="jumlah" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Anggaran">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputtanggal">Jumlah Anggaran</label>
+                    <label for="exampleInputtanggal">Tanggal</label>
                     <input type="date" name="tanggal" class="form-control" id="exampleInputdate">
                   </div>
                 <!-- /.card-body -->

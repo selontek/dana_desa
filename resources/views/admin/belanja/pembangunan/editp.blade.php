@@ -223,19 +223,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/pembangunan" class="nav-link" style="color: white; text-decoration: none;">
+                <a href="/pembangunan" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pembangunan Desa</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/olahraga" class="nav-link" style="color: white; text-decoration: none;">
+                <a href="/olahraga" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kepemudaan & Olahraga</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/bencana" class="nav-link" style="color: white; text-decoration: none;">
+                <a href="/bencana" class="nav-link" style="color: white; text-decoration: none;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Penanggulan Bencana</p>
                 </a>
@@ -262,27 +262,47 @@
         <!-- /.card-header -->
         <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Tambah data</h3>
+                <h3 class="card-title">Edit data Penanggulan</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="post" action="/admin/store">
+              <form method="post" action="/pembangunan/{{$pem->id}}">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputtext">Sumber Dana</label>
-                    <input type="text" name="sumberdana" class="form-control" id="exampleInputtext" placeholder="Sumber Dana">
+                    <label for="exampleInputtext">Nama Rancangan</label>
+                    <input type="text" name="rancangan" class="form-control" value="{{$jur->jurusan}}" id="exampleInputtext" placeholder="Rancangan">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputtext">Jasa</label>
+                    <input type="text" name="jasa" class="form-control" value="{{$jur->jurusan}}" id="exampleInputtext" placeholder="Jasa">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputtext">Penanggung Jawab</label>
+                    <input type="text" name="penanggungjawab" class="form-control" value="{{$jur->jurusan}}" id="exampleInputtext" placeholder="Penanggung Jawab">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputtanggal">Tanggal Pembuatan</label>
+                    <input type="date" name="tanggal" class="form-control" value="{{$jur->jurusan}}" id="exampleInputdate">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputtext">Estimasi</label>
+                    <input type="text" name="estimasi" class="form-control" value="{{$jur->jurusan}}" id="exampleInputtext" placeholder="Estimasi">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputjumlah">Jumlah Anggaran</label>
-                    <input type="number" name="jumlah" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Anggaran">
+                    <input type="number" name="jumlah" class="form-control" value="{{$jur->jurusan}}" id="exampleInputPassword1" placeholder="Jumlah Anggaran">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputtanggal">Jumlah Anggaran</label>
-                    <input type="date" name="tanggal" class="form-control" id="exampleInputdate">
+                    <label for="exampleInputjumlah">Realisasi</label>
+                    <input type="number" name="realisasi" class="form-control" value="{{$jur->jurusan}}" id="exampleInputPassword1" placeholder="Realisasi">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputtext">Lebih/kurang</label>
+                    <input type="number" name="lebihkurang" class="form-control" value="{{$jur->jurusan}}" id="exampleInputPassword1" placeholder="Lebih Kurang">
                   </div>
                 <!-- /.card-body -->
-                <div class="card-footer">
+                <div class="card-footer--">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>

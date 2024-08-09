@@ -283,7 +283,7 @@
                         <td>{{$item->sumberdana}}</td>
                         <td>{{$item->jumlah}}</td>
                         <td>{{$item->tanggal}}</td>
-                        <td>action</td>
+                        <td><a href="/admin/edit/{{$item->id}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i>Edit</a></td>
                     </tr>
                     @endforeach
                 </tbody>

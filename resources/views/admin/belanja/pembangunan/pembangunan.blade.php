@@ -25,6 +25,10 @@
   <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -45,8 +49,8 @@
         <a href="/admin" class="nav-link" style="color: white; text-decoration: none;">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        {{-- <a href="#" class="nav-link" style="color: whit; text-decoration: none;">Contact</a>
-      </li> --}}
+        <a href="#" class="nav-link" style="color: white; text-decoration: none;">Contact</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -173,7 +177,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #009dff;" >
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #009dff;">
     <!-- Brand Logo -->
 
     <!-- Sidebar -->
@@ -181,26 +185,17 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/naganraya.jpeg" class="img-circle elevation-2" alt="User Image">
+          <img src="../dist/img/naganraya.jpeg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block" style="color: white; text-decoration: none;">RANTAU SELAMAT</a>
         </div>
-        <form method="POST" action="{{ route('logout') }}">
-          @csrf
-
-          <x-dropdown-link :href="route('logout')"
-                  onclick="event.preventDefault();
-                              this.closest('form').submit();">
-              {{ __('Log Out') }}
-          </x-dropdown-link>
-      </form>
       </div>
 
       <!-- SidebarSearch Form -->
       {{-- <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" >
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
             <button class="btn btn-sidebar">
               <i class="fas fa-search fa-fw"></i>
@@ -249,7 +244,6 @@
           </li>
         </ul>
       </nav>
-      
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -264,26 +258,57 @@
 
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
-      <div class="card" style="width: 100%; height: 100vh;">
-        <div class="card-body" style="background-image: url('{{ asset('dist/img/desa.jpg') }}'); background-size: cover; background-position: center; color: white; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; padding: 20px;">
-            <div style="margin-top: 10%; text-align: center;">
-                <h1 style="font-weight: bold; font-size: 6rem; margin: 0; padding-bottom: 1px; text-shadow: 3px 3px 6px rgba(0, 121, 113, 0.5); ">Selamat datang di</h1>
-                <h3 style="font-weight: bold; font-size: 3.5rem; margin: 0; text-shadow: 3px 3px 10px rgba(0, 121, 113, 0.5);">Gampong Rantau Selamat</h3>
-                <h4 style="font-weight: bold; font-size: 2rem; margin: 0;"> <a href="/admin/dana" class="card-link" style="color: rgb(255, 255, 255); text-shadow: 0 0  25px white; margin-top: 15px; display: block;">>>> Update data <<<</a></h4>
-            </div>
+    <!-- /.card -->
+    <div class="card">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h3 class="card-title">Pembangunan Desa</h3>
+            <button type="button" style="width: 180px; margin-left: 900px;" class="btn btn-sm btn-block bg-gradient-primary ms-auto"><a href="/pembangunan/tambah" style="color: inherit; text-decoration: none;">Tambah</a></button>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Rancangan</th>
+                        <th>Jasa</th>
+                        <th>Penanggung Jawab</th>
+                        <th>Tanggal Pembuatan</th>
+                        <th>Etimasi</th>
+                        <th>Anggaran</th>
+                        <th>Realisasi</th>
+                        <th>Lebih/Kurang</th>
+                        <th>Bukti</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  @foreach ($pembangunan as $item)
+                    <tr>
+                        <td>{{$nomor++}}</td>
+                        <td>{{$item->rancangan}}</td>
+                        <td>{{$item->jasa}}</td>
+                        <td>{{$item->penanggungjawab}}</td>
+                        <td>{{$item->tanggal}}</td>
+                        <td>{{$item->estimasi}}</td>
+                        <td>{{$item->jumlah}}</td>
+                        <td>{{$item->realisasi}}</td>
+                        <td>{{$item->lebihkurang}}</td>
+                        <td><img src="{{ asset('/foto/'.$item->foto) }}" width="100" alt=""></td>
+                        {{-- <td><img src="{{ asset('storage/fotos/' . $pembangunan->foto) }}" alt="Foto Pembangunan"> --}}
+                        </td>
+                        <td><a href="/admin/edit/{{$item->id}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i>Edit</a></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
         <!-- /.card-body -->
-        <!-- /.card-footer-->
     </div>
-    
-    
-    
-    
-    
-    
-      <!-- /.card -->
+    <!-- /.card -->
+</section>
+<!-- /.content -->
+
 
     </section>
     <!-- /.content -->
@@ -333,5 +358,35 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>

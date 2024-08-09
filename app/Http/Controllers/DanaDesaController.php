@@ -54,7 +54,8 @@ class DanaDesaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $dan = Danadesa::find($id);
+        return view('/admin.dana_desa.edit',compact('dan'));
     }
 
     /**
@@ -62,7 +63,13 @@ class DanaDesaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $dan = Danadesa::find($id);
+        $dan->sumberdana = $request->sumberdana;
+        $dan->jumlah = $request->jumlah;
+        $dan->tanggal = $request->tanggal;
+        $dan->save();
+
+        return redirect('/admin/dana');
     }
 
     /**
