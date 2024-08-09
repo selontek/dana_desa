@@ -57,9 +57,9 @@ Route::middleware(['auth', 'level:Administrator'])->group(function () {
     Route::get('/olahraga', [OlahragaController::class, 'index']);
     Route::get('/olahraga/tambah', [OlahragaController::class, 'create']);
     Route::post('/olahraga/store', [OlahragaController::class, 'store']);
-    Route::get('/olahraga/edito{id}', [OlahragaController::class, 'edit']);
+    Route::get('/olahraga/edito/{id}', [OlahragaController::class, 'edit']);
     Route::put('/olahraga/{id}', [OlahragaController::class, 'update']);
-    Route::delete('/profile', [OlahragaController::class, 'destroy']);
+    Route::delete('/olahraga/{id}', [OlahragaController::class, 'destroy']);
 
 
     Route::get('/bencana', [BencanaController::class, 'index']);

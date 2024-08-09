@@ -46,11 +46,11 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/admin" class="nav-link" style="color: white; text-decoration: none;">Home</a>
+        <a href="/admin" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link" style="color: white; text-decoration: none;">Contact</a>
-      </li>
+      {{-- <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li> --}}
     </ul>
 
     <!-- Right navbar links -->
@@ -259,67 +259,47 @@
     <!-- Main content -->
     <section class="content">
     <!-- /.card -->
-    <div class="card">
-    <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h3 class="card-title">Kepemudaan dan Olahraga</h3>
-            <button type="button" style="width: 180px; margin-left: 900px;" class="btn btn-sm btn-block bg-gradient-primary ms-auto"><a href="/olahraga/tambah" style="color: inherit; text-decoration: none;">Tambah</a></button>
-        </div>
         <!-- /.card-header -->
-        <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>keperluan</th>
-                        <th>Penanggung Jawab</th>
-                        <th>Tanggal Serah</th>
-                        <th>Anggaran</th>
-                        <th>Realisasi</th>
-                        <th>Lebih/Kurang</th>
-                        <th>Action</th>
-                        @foreach ($olahraga as $item)
-                        <tr>
-                            <td>{{$nomor++}}</td>
-                            <td>{{$item->kebutuhan}}</td>
-                            <td>{{$item->penanggungjawab}}</td>
-                            <td>{{$item->tanggal}}</td>
-                            <td>{{$item->jumlah}}</td>
-                            <td>{{$item->realisasi}}</td>
-                            <td>{{$item->lebihkurang}}</td>
-                            <td><a href="/olahraga/edito/{{$item->id}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i></a>
-                            
-                              <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#hapus{{$item->id}}">
-                                <i class="fa fa-trash"></i>
-                            </button>
-    
-                            <!-- Modal -->
-                            <div class="modal fade" id="hapus{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Peringatan</h1>
-                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                    Yakin ingin menghapus data Kebutuhan <b>{{$item->olahraga}}</b>?
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                    <form action="/olahraga/{{$item->id}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-primary">Hapus</button>
-                                    </form>
-    
-                                    </div>
-                                </div>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforeach
-                </tbody>
-            </table>
-        </div>
+        <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Tambah data Kepemudaan</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post" action="/olahraga/{{$ola->id}}">
+                @method('PUT')
+                @csrf
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputtext">Kebutuhan</label>
+                    <input type="text" name="kebutuhan" class="form-control" value="{{$ola->kebutuhan}}" id="exampleInputtext" placeholder="Kebutuhan">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputtext">penanggung Jawab</label>
+                    <input type="text" name="penanggungjawab" class="form-control" value="{{$ola->penanggungjawab}}" id="exampleInputtext" placeholder="Penanggung Jawab">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputtanggal">Tanggal Serah</label>
+                    <input type="date" name="tanggal" class="form-control" value="{{$ola->tanggal}}" id="exampleInputdate">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputjumlah">Jumlah Anggaran</label>
+                    <input type="number" name="jumlah" class="form-control" value="{{$ola->jumlah}}" id="exampleInputPassword1" placeholder="Jumlah Anggaran">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputjumlah">Realisasi</label>
+                    <input type="number" name="realisasi" class="form-control"  value="{{$ola->realisasi}}" id="exampleInputPassword1" placeholder="Realisasi">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputtext">Lebih/kurang</label>
+                    <input type="number" name="lebihkurang" class="form-control" value="{{$ola->lebihkurang}}" id="exampleInputPassword1" placeholder="Lebih Kurang">
+                  </div>
+                <!-- /.card-body -->
+                <div class="card-footer--">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
         <!-- /.card-body -->
     </div>
     <!-- /.card -->

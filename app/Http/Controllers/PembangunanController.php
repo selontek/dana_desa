@@ -64,8 +64,8 @@ class PembangunanController extends Controller
      */
     public function edit(string $id)
     {
-        $pem = Jurusan::find($id);
-        return view('pembangunan.edit',compact('pem'));
+        $pem = Pembangunan::find($id);
+        return view('admin.belanja.pembangunan.editp',compact('pem'));
     }
 
     /**
@@ -74,15 +74,14 @@ class PembangunanController extends Controller
     public function update(Request $request, string $id)
     {
         $pem = Pembangunan::find($id);
-        $pembangunan->rancangan = $request-> rancangan;
-        $pembangunan->jasa = $request-> jasa;
-        $pembangunan->penanggungjawab = $request-> penanggungjawab;
-        $pembangunan->tanggal = $request-> tanggal;
-        $pembangunan->estimasi = $request-> estimasi;
-        $pembangunan->jumlah = $request-> jumlah;
-        $pembangunan->realisasi = $request-> realisasi;
-        $pembangunan->lebihkurang = $request-> lebihkurang;
-        $pembangunan->foto = $request->foto->getClientOriginalName();
+        $pem->rancangan = $request-> rancangan;
+        $pem->jasa = $request-> jasa;
+        $pem->penanggungjawab = $request-> penanggungjawab;
+        $pem->tanggal = $request-> tanggal;
+        $pem->estimasi = $request-> estimasi;
+        $pem->jumlah = $request-> jumlah;
+        $pem->realisasi = $request-> realisasi;
+        $pem->lebihkurang = $request-> lebihkurang;
         $pem->save();
 
         return redirect('/pembangunan');
@@ -93,6 +92,9 @@ class PembangunanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pem = Pembangunan::find($id);
+        $pem->delete();
+
+        return redirect('/pembangunan');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Olahraga;
 
 class OlahragaController extends Controller
 {
@@ -11,7 +12,9 @@ class OlahragaController extends Controller
      */
     public function index()
     {
-        return view('admin.belanja.olahraga.olahraga');
+        $nomor = 1;
+        $olahraga = Olahraga::all();    
+        return view('admin.belanja.olahraga.olahraga',compact('nomor','olahraga'));
     }
 
     /**
@@ -27,7 +30,16 @@ class OlahragaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $olahraga = new Olahraga;
+        $olahraga->kebutuhan = $request-> kebutuhan;
+        $olahraga->penanggungjawab = $request-> penanggungjawab;
+        $olahraga->tanggal = $request-> tanggal;
+        $olahraga->jumlah = $request-> jumlah;
+        $olahraga->realisasi = $request-> realisasi;
+        $olahraga->lebihkurang = $request-> lebihkurang;
+        $olahraga->save();
+
+        return redirect('olahraga');
     }
 
     /**
@@ -43,7 +55,8 @@ class OlahragaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ola = Olahraga::find($id);
+        return view('admin.belanja.olahraga.edito',compact('ola'));
     }
 
     /**
@@ -51,7 +64,16 @@ class OlahragaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $ola = Olahraga::find($id);
+        $ola->kebutuhan = $request-> kebutuhan;
+        $ola->penanggungjawab = $request-> penanggungjawab;
+        $ola->tanggal = $request-> tanggal;
+        $ola->jumlah = $request-> jumlah;
+        $ola->realisasi = $request-> realisasi;
+        $ola->lebihkurang = $request-> lebihkurang;
+        $ola->save();
+
+        return redirect('/olahraga');
     }
 
     /**
