@@ -6,6 +6,7 @@ use App\Http\Controllers\DanaDesaController;
 use App\Http\Controllers\PembangunanController;
 use App\Http\Controllers\OlahragaController;
 use App\Http\Controllers\BencanaController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -28,9 +29,17 @@ Route::get('/', function () {
 // ROUTE USER
 Route::middleware(['auth','level:user'])->group(function(){
     Route::get('/user', function () {
-        return view('dashboard');
-    })->middleware('auth');
+        return view('user.index');
+    });
+
+    Route::get('/user/dashboard', [UserController::class, 'index']);
+    Route::get('/user/danadesa', [UserController::class, 'danadesa']);
+    Route::get('/user/pembangunan', [UserController::class, 'pembangunan']);
+    Route::get('/user/olahraga', [UserController::class, 'olahraga']);
+    Route::get('/user/bencana', [UserController::class, 'bencana']);
+    
 });
+
 
 // ROUTE ADMIN
 Route::middleware(['auth', 'level:Administrator'])->group(function () {
@@ -77,9 +86,9 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit']);

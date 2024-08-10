@@ -94,47 +94,16 @@
           </div>
         </div>
       </div> --}}
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item">
-            <a href="/admin/dana" class="nav-link" style="color: white; text-decoration: none;">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Dana Desa
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link" style="color: white; text-decoration: none;">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Belanja
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/pembangunan" class="nav-link" style="color: white; text-decoration: none;">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pembangunan Desa</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/olahraga" class="nav-link" style="color: white; text-decoration: none;">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kepemudaan & Olahraga</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/bencana" class="nav-link" style="color: white; text-decoration: none;">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Penanggulan Bencana</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a href="/user/dashboard" class="nav-link" style="color: white; text-decoration: none;">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Dashboard
+            </p>
+          </a>
+      </ul>
+    </nav>
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -152,8 +121,7 @@
     <!-- /.card -->
     <div class="card">
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h3 class="card-title">Penanggulan Bencana</h3>
-            <button type="button" style="width: 180px; margin-left: 900px;" class="btn btn-sm btn-block bg-gradient-primary ms-auto"><a href="/bencana/tambah" style="color: inherit; text-decoration: none;">Tambah</a></button>
+            <h3 class="card-title">Pembangunan Desa</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -161,7 +129,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Kondisi</th>
+                        <th>Rancangan</th>
                         <th>Anggaran</th>
                         <th>Realisasi</th>
                         <th>Lebih/Kurang</th>
@@ -169,44 +137,77 @@
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($bencana as $item)
+                  @foreach ($pembangunan as $item)
                     <tr>
                         <td>{{$nomor++}}</td>
-                        <td>{{$item->kondisi}}</td>
+                        <td>{{$item->rancangan}}</td>
                         <td>{{$item->jumlah}}</td>
                         <td>{{$item->realisasi}}</td>
                         <td>{{$item->lebihkurang}}</td>
-                        <td>
-                          <td><a href="/bencana/editb/{{$item->id}}" class="btn btn-xs btn-info"><i class="fas fa-pencil-alt"></i></a>
-                        
-                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#hapus{{$item->id}}">
-                              <i class="fa fa-trash"></i>
-                          </button>
-  
-                          <!-- Modal -->
-                          <div class="modal fade" id="hapus{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Peringatan</h1>
-                                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                  Yakin ingin menghapus data rancangan <b>{{$item->bencana}}</b>?
-                                  </div>
-                                  <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                  <form action="/bencana/{{$item->id}}" method="post">
-                                      @csrf
-                                      @method('DELETE')
-                                      <button type="submit" class="btn btn-primary">Hapus</button>
-                                  </form>
-  
-                                  </div>
-                              </div>
-                              </div>
-                          </td>
-                        </td>
+                        {{-- <td><img src="{{ asset('storage/fotos/' . $pembangunan->foto) }}" alt="Foto Pembangunan"> --}}
+                           <td> <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#detail{{$item->id}}">
+                                <i class="fa fa-eye"></i>
+                            </button>
+
+                            <!-- Modal Detail-->
+                            <div class="modal fade" id="detail{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Detail {{$item->rancangan}}</h1>
+                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table">
+
+                                            <tbody>
+                                                    <tr>
+                                                        <td>Rancangan</td>
+                                                        <th scope="row">{{$item->rancangan}}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jasa</td>
+                                                        <th scope="row">{{$item->jasa}}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>penanggung Jawab</td>
+                                                        <th scope="row">{{$item->penanggungjawab}}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tanggal Mulai</td>
+                                                        <th scope="row">{{$item->tanggal}}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Estimasi</td>
+                                                        <th scope="row">{{$item->estimasi}}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jumlah</td>
+                                                        <th scope="row">{{$item->jumlah}}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Realisasi</td>
+                                                        <th scope="row">{{$item->realisasi}}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Lebih/Kurang</td>
+                                                        <th scope="row">{{$item->lebihkurang}}</th>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Foto</td>
+                                                        <th scope="row"><img src="{{ asset('/foto/'.$item->foto) }}" width="100px" alt=""></th>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                </td>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                     </tr>
                     @endforeach
                 </tbody>
